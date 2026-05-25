@@ -1,7 +1,8 @@
 {
   "description": "Official OpenTiny React Component",
   "repository": {
-    "url": "https://github.com/tinymce/tinymce-react"
+    "type": "git",
+    "url": "git+https://github.com/mild-blue/opentiny-react.git"
   },
   "files": [
     "lib",
