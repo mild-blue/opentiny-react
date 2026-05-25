@@ -1,7 +1,8 @@
 {
   "description": "Official OpenTiny React Component",
   "repository": {
-    "url": "https://github.com/tinymce/tinymce-react"
+    "type": "git",
+    "url": "git+https://github.com/mild-blue/opentiny-react.git"
   },
   "files": [
     "lib",
@@ -26,12 +27,15 @@
   "author": "Ephox Corporation DBA Tiny Technologies, Inc.",
   "license": "MIT",
   "dependencies": {
-    "opentiny": "6.9.29",
+    "opentiny": "6.9.31",
     "prop-types": "^15.6.2"
   },
   "peerDependencies": {
     "react": "^19.0.0 || ^18.0.0 || ^17.0.1 || ^16.7.0",
     "react-dom": "^19.0.0 || ^18.0.0 || ^17.0.1 || ^16.7.0"
+  },
+  "engines": {
+    "node": ">=22.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",

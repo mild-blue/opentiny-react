@@ -8329,10 +8329,10 @@ open@^8.0.4, open@^8.0.9:
     is-docker "^2.1.1"
     is-wsl "^2.2.0"
 
-opentiny@6.9.29:
-  version "6.9.29"
-  resolved "https://registry.yarnpkg.com/opentiny/-/opentiny-6.9.29.tgz#9fb9066ddfb5dffdc883e9d6af76dee80571e5de"
-  integrity sha512-3xe26QBbua1xhTTcuHA4lHxmkPaU63dFkc1C+bTXjzTr51pFzYSFSiZuqLE+p6XAADNDmYgtpze71ImIrwCbAw==
+opentiny@6.9.31:
+  version "6.9.31"
+  resolved "https://registry.yarnpkg.com/opentiny/-/opentiny-6.9.31.tgz#950bec083953bafe26410086b174c70d0c3846f8"
+  integrity sha512-+m5hk0SXms18gBqkHAdB2+wCuV7IxvSgRq2PsPevGPpuLuUlWt4pcW49mTe6r8uNYUPDM0Ec61Coq5VjD58KIA==
 
 optionator@^0.9.3:
   version "0.9.3"
