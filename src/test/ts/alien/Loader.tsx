@@ -4,7 +4,7 @@ import { SugarElement, SugarNode } from '@ephox/sugar';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Editor, IAllProps, IProps } from '../../../main/ts/components/Editor';
-import { Editor as TinyMCEEditor } from 'tinymce';
+import { Editor as TinyMCEEditor } from 'opentiny';
 
 export interface Context {
   DOMNode: HTMLElement;
@@ -65,7 +65,9 @@ const cReRender = (props: Partial<IAllProps>) => Chain.op<Context>((context) => 
 });
 
 const cRemove = Chain.op((_) => {
-  ReactDOM.unmountComponentAtNode(getRoot());
+  const root = getRoot();
+  ReactDOM.unmountComponentAtNode(root);
+  root.remove();
 });
 
 const cNamedChainDirect = (name: keyof Context) => NamedChain.direct(

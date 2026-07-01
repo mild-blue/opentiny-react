@@ -6,7 +6,7 @@ import { PlatformDetection } from '@ephox/sand';
 
 import { getTinymce } from '../../../main/ts/TinyMCE';
 import { EventStore, VERSIONS, cAssertContent, cSetContent, type Version } from '../alien/TestHelpers';
-import { Editor as TinyMCEEditor, EditorEvent, Events } from 'tinymce';
+import { Editor as TinyMCEEditor, EditorEvent, Events } from 'opentiny';
 
 type SetContentEvent = EditorEvent<Events.EditorEventMap['SetContent']>;
 
