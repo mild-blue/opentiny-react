@@ -1,8 +1,8 @@
 import { Chain, Assertions } from '@ephox/agar';
 import { Cell, Obj } from '@ephox/katamari';
 import { ApiChains } from '@ephox/mcagar';
-import { Version } from 'src/main/ts/components/Editor';
-import { Editor as TinyMCEEditor } from 'tinymce';
+import { Version } from '../../../main/ts/components/Editor';
+import { Editor as TinyMCEEditor } from 'opentiny';
 
 interface EventHandlerArgs<T> {
   editorEvent: T;

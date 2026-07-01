@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Assert, UnitTest } from '@ephox/bedrock-client';
 import { Arr, Obj, Fun } from '@ephox/katamari';
-import { IAllProps } from 'src/main/ts/components/Editor';
+import { IAllProps } from '../../../main/ts/components/Editor';
 import { configHandlers2 } from '../../../main/ts/Utils';
 
 interface Handler {

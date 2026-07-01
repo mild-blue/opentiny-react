@@ -1,5 +1,5 @@
 import React from 'react';
-import { EditorEvent, Events, Editor as TinyMCEEditor } from 'tinymce';
+import { EditorEvent, Events, Editor as TinyMCEEditor } from 'opentiny';
 import { StoryObj } from '@storybook/react';
 import { Editor, IAllProps } from '../main/ts/components/Editor';
 
