@@ -1,7 +1,6 @@
-import { Chain, Assertions } from '@ephox/agar';
+import { Chain, Assertions, GeneralSteps, Step } from '@ephox/agar';
 import { Cell, Obj } from '@ephox/katamari';
 import { ApiChains } from '@ephox/mcagar';
-import { Version } from '../../../main/ts/components/Editor';
 import { Editor as TinyMCEEditor } from 'opentiny';
 
 interface EventHandlerArgs<T> {
@@ -11,8 +10,7 @@ interface EventHandlerArgs<T> {
 
 type HandlerType<A> = (a: A, editor: TinyMCEEditor) => unknown;
 
-const VERSIONS: Version[] = [ '4', '5', '6', '7' ];
-const CLOUD_VERSIONS: Version[] = [ '5', '6', '7' ];
+const OPENTINY_SRC = '/project/node_modules/opentiny/tinymce.min.js';
 
 const EventStore = () => {
   const state: Cell<Record<string, EventHandlerArgs<unknown>[]>> = Cell({});
@@ -52,11 +50,26 @@ const EventStore = () => {
 const cSetContent = (content: string) => ApiChains.cSetContent(content) as unknown as Chain<TinyMCEEditor, TinyMCEEditor>;
 const cAssertContent = (content: string) => ApiChains.cAssertContent(content) as unknown as Chain<TinyMCEEditor, TinyMCEEditor>;
 
+// Loads opentiny (the editor this wrapper targets) into the page for the duration of `step`.
+const sWithOpentiny = (step: Step<unknown, unknown>): Step<unknown, unknown> =>
+  GeneralSteps.sequence([
+    Step.async<unknown>((next, die) => {
+      if ((window as unknown as { tinymce?: unknown }).tinymce) {
+        next();
+      } else {
+        const script = document.createElement('script');
+        script.src = OPENTINY_SRC;
+        script.onload = () => next();
+        script.onerror = () => die(new Error(`Failed to load ${OPENTINY_SRC}`));
+        document.head.appendChild(script);
+      }
+    }),
+    step
+  ]);
+
 export {
   EventStore,
   cSetContent,
   cAssertContent,
-  VERSIONS,
-  CLOUD_VERSIONS,
-  Version
+  sWithOpentiny
 };

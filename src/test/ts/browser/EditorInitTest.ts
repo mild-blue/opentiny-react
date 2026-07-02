@@ -1,17 +1,15 @@
 import { Assertions, Chain, GeneralSteps, Logger, Pipeline } from '@ephox/agar';
 import { UnitTest } from '@ephox/bedrock-client';
-import { VersionLoader } from '@tinymce/miniature';
 
 import { cRemove, cRender, cDOMNode, cEditor, cReRender } from '../alien/Loader';
-import { type Version, cAssertContent, VERSIONS } from '../alien/TestHelpers';
+import { cAssertContent, sWithOpentiny } from '../alien/TestHelpers';
 
 UnitTest.asynctest('Editor.test', (success, failure) => {
   const cAssertProperty = (propName: string, expected: string) => Chain.op((el: HTMLElement) => {
     Assertions.assertEq(propName + ' should be ' + expected, expected, (el as unknown as Record<string, unknown>)[propName]);
   });
 
-  const sTestVersion = (version: Version) => VersionLoader.sWithVersion(
-    version,
+  const sTest = sWithOpentiny(
     GeneralSteps.sequence([
       Logger.t('tagName prop changes element', GeneralSteps.sequence([
         Logger.t('it is div by default for inline', Chain.asStep({}, [
@@ -88,16 +86,16 @@ UnitTest.asynctest('Editor.test', (success, failure) => {
         cRender({}),
         cEditor(Chain.op((editor) => {
           Assertions.assertEq(
-            'Should be design mode', true, version === '4' ? !editor.readonly : editor.mode.get() === 'design');
+            'Should be design mode', true, editor.mode.get() === 'design');
         })),
         cReRender({ disabled: true }),
         cEditor(Chain.op((editor) => {
-          Assertions.assertEq('Should be readonly mode', true, version === '4' ? editor.readonly : editor.mode.get() === 'readonly');
+          Assertions.assertEq('Should be readonly mode', true, editor.mode.get() === 'readonly');
         })),
         cRemove
       ]))
     ])
   );
 
-  Pipeline.async({}, VERSIONS.map(sTestVersion), success, failure);
+  Pipeline.async({}, [ sTest ], success, failure);
 });
