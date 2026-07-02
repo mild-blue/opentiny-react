@@ -6,8 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 6.9.0 - 2024-04-24
+
+First release as `opentiny-react`, a fork of `@tinymce/tinymce-react`.
+
 ### Added
 - Added `tabIndex` prop. Community PR acknowledgement: Grand Julivan <grandjulivan@gmail.com>
+- Added a GitHub Actions workflow to publish the package to npm when a release is created.
+
+### Changed
+- Forked from `@tinymce/tinymce-react` and published as `opentiny-react`; the package now depends on [`opentiny`](https://github.com/mild-blue/opentiny) instead of TinyMCE.
+
+### Removed
+- Removed TinyMCE-specific GitHub configuration (CODEOWNERS, issue/PR templates, CodeQL and stale-issue workflows).
 
 ## 5.0.0 - 2024-03-27
 
